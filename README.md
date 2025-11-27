@@ -11,10 +11,10 @@
 ## Requirements:
 
 ```
-Git: 2.51.0
-Spring Boot: 3.5.6
+Git: 2.51+
+Spring Boot: 3.5.8
 Maven: 3.9+
-Java: 24
+Java: 25
 ```
 
 ## Clone Github Repository
