@@ -12,7 +12,7 @@
 
 ```
 Git: 2.51+
-Spring Boot: 4.0.0
+Spring Boot: 4.0.1
 Maven: 3.9+
 Java: 25
 ```
