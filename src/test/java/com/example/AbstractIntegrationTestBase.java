@@ -1,10 +1,10 @@
 package com.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.resttestclient.TestRestTemplate;
-import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureTestRestTemplate;
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.web.servlet.client.RestTestClient;
 
 /**
  * base class for performing integration testing on live server database etc.
@@ -12,9 +12,9 @@ import org.springframework.test.context.TestPropertySource;
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(properties = {"spring.profiles.active=test"})
-@AutoConfigureTestRestTemplate
+@AutoConfigureRestTestClient
 public abstract class AbstractIntegrationTestBase {
 
     @Autowired
-    public TestRestTemplate testRestTemplate;
+    public RestTestClient restTestClient;
 }
