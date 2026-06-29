@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * smoke test to check if application is starting successfully or not
@@ -17,8 +16,7 @@ class SmokeTests extends AbstractBaseTest {
     ApplicationContext applicationContext;
 
     @Test
-    void check_contextLoads() throws Exception {
+    void context_should_load() throws Exception {
         assertThat(applicationContext).isNotNull();
-        assertNotNull(applicationContext);
     }
 }

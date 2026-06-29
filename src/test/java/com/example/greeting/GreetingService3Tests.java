@@ -10,7 +10,7 @@ import static org.mockito.Mockito.*;
 
 /**
  * Service Layer Unit Testing Using Mockito Beans and Spring Boot Application Context @see {@link AbstractBaseTest}
- * Here Mock Beans will be replaced amd injected in app context at runtime
+ * Here Mock Beans will be replaced and injected in app context at runtime
  */
 class GreetingService3Tests extends AbstractBaseTest {
 

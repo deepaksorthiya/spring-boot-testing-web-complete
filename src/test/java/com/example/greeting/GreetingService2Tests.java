@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Service Layer Integration Testing Using Spring Boot Application Context @see {@link AbstractBaseTest}
- * No Mock Object will be replaced amd injected in app context at runtime
+ * No Mock Object will be replaced and injected in app context at runtime
  */
 @TestPropertySource(properties = {"spring.profiles.active=test"})
 class GreetingService2Tests extends AbstractBaseTest {
