@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * this test is just to cover main method in test coverage
@@ -18,9 +17,8 @@ class SpringBootTestingWebCompleteApplicationTest {
     ApplicationContext applicationContext;
 
     @Test
-    void test_main_method() {
+    void main_method_should_load_context() {
         assertThat(applicationContext).isNotNull();
-        assertNotNull(applicationContext);
     }
 
 }
