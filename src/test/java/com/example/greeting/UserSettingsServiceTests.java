@@ -6,6 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.MockedConstruction;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.aot.DisabledInAotMode;
 
 import java.util.Random;
 
@@ -16,6 +17,7 @@ import java.util.Random;
 /// ## Approach 2: Testing without Refactoring (Legacy Support)
 /// If you cannot change the source code (e.g., it is legacy code), you must use Mockito-inline to mock the constructor of the Random class.
 @ExtendWith(MockitoExtension.class)
+@DisabledInAotMode
 class UserSettingsServiceTests {
 
     @InjectMocks

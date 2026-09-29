@@ -3,6 +3,7 @@ package com.example.greeting;
 import com.example.AbstractBaseTest;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.aot.DisabledInAotMode;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,6 +13,7 @@ import static org.mockito.Mockito.*;
  * Service Layer Unit Testing Using Mockito Beans and Spring Boot Application Context @see {@link AbstractBaseTest}
  * Here Mock Beans will be replaced and injected in app context at runtime
  */
+@DisabledInAotMode
 class GreetingService3Tests extends AbstractBaseTest {
 
     @Autowired

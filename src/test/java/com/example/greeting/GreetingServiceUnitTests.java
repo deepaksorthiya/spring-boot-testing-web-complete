@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.aot.DisabledInAotMode;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -13,6 +14,7 @@ import static org.mockito.Mockito.*;
  * Service Layer Unit Testing Using Mockito
  */
 @ExtendWith(MockitoExtension.class)
+@DisabledInAotMode
 class GreetingServiceUnitTests {
 
     @InjectMocks
