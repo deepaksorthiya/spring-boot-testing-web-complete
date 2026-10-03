@@ -1,19 +1,22 @@
 package com.example.greeting;
 
-import org.springframework.beans.factory.annotation.Value;
+
+import com.example.ApplicationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@EnableConfigurationProperties(ApplicationProperties.class)
 public class GreetingRepo {
 
-    private final String message;
+    private final ApplicationProperties.GreetingProperties greetingProperties;
 
-    public GreetingRepo(@Value("${greet.message:NA}") String message) {
-        this.message = message;
+    public GreetingRepo(ApplicationProperties appProperties) {
+        this.greetingProperties = appProperties.greet();
     }
 
     public String greet() {
-        return message;
+        return greetingProperties.message();
     }
 
 }
