@@ -1,14 +1,15 @@
 package com.example.greeting;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.MockedConstruction;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.context.aot.DisabledInAotMode;
 
 import java.util.Random;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /// ## Approach 1: Refactoring (Recommended)
 /// The cleanest solution is to inject the Random dependency.
@@ -17,27 +18,10 @@ import java.util.Random;
 /// ## Approach 2: Testing without Refactoring (Legacy Support)
 /// If you cannot change the source code (e.g., it is legacy code), you must use Mockito-inline to mock the constructor of the Random class.
 @ExtendWith(MockitoExtension.class)
-@DisabledInAotMode
 class UserSettingsServiceTests {
 
     @InjectMocks
     private UserSettingsService userSettingsService;
-
-    @BeforeAll
-    static void setUpBeforeClass() throws Exception {
-    }
-
-    @AfterAll
-    static void tearDownAfterClass() throws Exception {
-    }
-
-    @BeforeEach
-    void setUp() throws Exception {
-    }
-
-    @AfterEach
-    void tearDown() throws Exception {
-    }
 
     @Test
     void getUserSettings_return_subscribe() {
@@ -48,7 +32,7 @@ class UserSettingsServiceTests {
                     Mockito.when(mock.nextBoolean()).thenReturn(true);
                 })) {
             String result = userSettingsService.getUserSettings();
-            Assertions.assertEquals("SUBSCRIBE", result);
+            assertThat(result).isEqualTo("SUBSCRIBE");
         }
     }
 
@@ -60,7 +44,7 @@ class UserSettingsServiceTests {
                     Mockito.when(mock.nextBoolean()).thenReturn(false);
                 })) {
             String result = userSettingsService.getUserSettings();
-            Assertions.assertEquals("UNSUBSCRIBE", result);
+            assertThat(result).isEqualTo("UNSUBSCRIBE");
         }
     }
 }

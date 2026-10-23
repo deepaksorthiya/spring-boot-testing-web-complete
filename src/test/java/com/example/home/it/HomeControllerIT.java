@@ -16,8 +16,7 @@ class HomeControllerIT extends AbstractIntegrationTestBase {
                 .uri("/")
                 .exchange()
                 .returnResult(String.class);
-        assertThat(hello.getResponseBody
-                ()).isEqualTo("default hello message");
         assertThat(hello.getStatus()).isEqualTo(HttpStatus.OK);
+        assertThat(hello.getResponseBody()).isEqualTo("default hello message");
     }
 }

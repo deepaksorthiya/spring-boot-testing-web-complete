@@ -11,20 +11,12 @@ class GreetingControllerIT extends AbstractIntegrationTestBase {
 
     @Test
     void greeting_should_return_greet_message_from_test_profile() {
-//        restTestClient
-//                .get()
-//                .uri("/greeting")
-//                .exchange()
-//                .expectAll(
-//                        responseSpec -> responseSpec.expectStatus().isOk(),
-//                        responseSpec -> responseSpec.expectBody(String.class).isEqualTo("test greet message")
-//                );
         EntityExchangeResult<String> greeting = restTestClient
                 .get()
                 .uri("/greeting")
                 .exchange()
                 .returnResult(String.class);
-        assertThat(greeting.getResponseBody()).contains("test greet message");
         assertThat(greeting.getStatus()).isEqualTo(HttpStatus.OK);
+        assertThat(greeting.getResponseBody()).isEqualTo("test greet message");
     }
 }

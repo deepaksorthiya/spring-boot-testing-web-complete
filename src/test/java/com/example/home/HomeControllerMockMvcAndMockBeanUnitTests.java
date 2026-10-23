@@ -17,8 +17,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Unit Testing for {@link HomeController} using mockito.
- * This {@link HomeController} has no dependencies so mock beans required.
+ * Unit Testing for {@link HomeController} using MockMvc and MockMvcTester.
+ * This {@link HomeController} has no dependencies, so no mock beans are required.
  */
 @WebMvcTest(HomeController.class)
 class HomeControllerMockMvcAndMockBeanUnitTests {

@@ -9,7 +9,7 @@ import org.springframework.test.web.servlet.client.RestTestClient;
 
 /**
  * Unit Testing for {@link HomeController} using @RestTestClient.
- * This {@link HomeController} has no dependencies so mock beans required.
+ * This {@link HomeController} has no dependencies, so no mock beans are required.
  * The {@link AutoConfigureRestTestClient} annotation tells Spring Boot to
  * create and configure a RestTestClient that's bound to your MockMvc instance.
  * Without it, you'd need to create the client manually.

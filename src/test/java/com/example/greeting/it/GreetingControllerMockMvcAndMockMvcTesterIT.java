@@ -38,9 +38,7 @@ class GreetingControllerMockMvcAndMockMvcTesterIT extends AbstractBaseTest {
                 .andExpectAll(
                         status().isOk(),
                         content().contentType(MediaType.APPLICATION_JSON),
-                        content().string(equalTo("default greet message")),
-                        jsonPath("$", is("default greet message")),
-                        jsonPath("$").value("default greet message")
+                        content().string("default greet message")
                 );
     }
 

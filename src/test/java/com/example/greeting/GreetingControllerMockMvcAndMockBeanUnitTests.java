@@ -72,7 +72,6 @@ class GreetingControllerMockMvcAndMockBeanUnitTests {
 
     @Test
     void greeting_should_return_status_ok_and_greet_message_with_mockMvcTester_when_diff_message_mock() throws Exception {
-        reset(service);
         when(service.greet()).thenReturn("Greeting Mock");
         MvcTestResult testResult = mockMvcTester
                 .get()

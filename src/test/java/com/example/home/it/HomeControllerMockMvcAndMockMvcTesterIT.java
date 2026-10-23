@@ -37,9 +37,7 @@ class HomeControllerMockMvcAndMockMvcTesterIT extends AbstractBaseTest {
                 .andExpectAll(
                         status().isOk(),
                         content().contentType(MediaType.APPLICATION_JSON),
-                        content().string(equalTo("default hello message")),
-                        jsonPath("$", is("default hello message")),
-                        jsonPath("$").value("default hello message")
+                        content().string("default hello message")
                 );
     }
 
