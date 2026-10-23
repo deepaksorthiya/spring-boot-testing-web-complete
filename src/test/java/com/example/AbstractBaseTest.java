@@ -1,10 +1,12 @@
 package com.example;
 
+import com.example.support.PostgresTestSupport;
+
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
- * base class for performing unit and integration testing
+ * Base class for tests that load the full application and PostgreSQL.
  */
 @SpringBootTest
-public abstract class AbstractBaseTest {
+public abstract class AbstractBaseTest extends PostgresTestSupport {
 }
