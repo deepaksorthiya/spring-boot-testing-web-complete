@@ -5,11 +5,11 @@ import com.example.blog.PostComment;
 import com.example.blog.PostCommentRepository;
 import com.example.blog.PostRepository;
 import com.example.support.PostgresTestSupport;
-import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
+import org.springframework.boot.jpa.test.autoconfigure.TestEntityManager;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureDataSourceInitialization;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,7 +26,7 @@ class PostRepositoryIT extends PostgresTestSupport {
     private PostCommentRepository comments;
 
     @Autowired
-    private EntityManager entityManager;
+    private TestEntityManager entityManager;
 
     @Test
     void persistsBothSidesOfTheRelationshipAcrossReload() {
@@ -34,7 +34,7 @@ class PostRepositoryIT extends PostgresTestSupport {
         post.addComment("Alice", "First comment");
         post.addComment("Bob", "Second comment");
 
-        posts.saveAndFlush(post);
+        entityManager.persistAndFlush(post);
         Long postId = post.getId();
         entityManager.clear();
 
@@ -54,7 +54,7 @@ class PostRepositoryIT extends PostgresTestSupport {
         Post post = new Post("Post", "Content");
         PostComment removed = post.addComment("Alice", "Remove me");
         PostComment retained = post.addComment("Bob", "Keep me");
-        posts.saveAndFlush(post);
+        entityManager.persistAndFlush(post);
         Long removedId = removed.getId();
         Long retainedId = retained.getId();
         Long postId = post.getId();
@@ -64,7 +64,7 @@ class PostRepositoryIT extends PostgresTestSupport {
         PostComment orphan = reloaded.getComments().stream()
                 .filter(comment -> comment.getId().equals(removedId)).findFirst().orElseThrow();
         reloaded.removeComment(orphan);
-        posts.flush();
+        entityManager.flush();
         entityManager.clear();
 
         assertThat(comments.findById(removedId)).isEmpty();
@@ -79,8 +79,8 @@ class PostRepositoryIT extends PostgresTestSupport {
         PostComment deletedComment = deletedPost.addComment("Alice", "Delete me too");
         Post retainedPost = new Post("Keep me", "Content");
         PostComment retainedComment = retainedPost.addComment("Bob", "Keep me too");
-        posts.saveAndFlush(deletedPost);
-        posts.saveAndFlush(retainedPost);
+        entityManager.persistAndFlush(deletedPost);
+        entityManager.persistAndFlush(retainedPost);
         Long deletedId = deletedPost.getId();
         Long deletedCommentId = deletedComment.getId();
         Long retainedId = retainedPost.getId();
@@ -88,7 +88,7 @@ class PostRepositoryIT extends PostgresTestSupport {
         entityManager.clear();
 
         posts.deleteById(deletedId);
-        posts.flush();
+        entityManager.flush();
         entityManager.clear();
 
         assertThat(posts.findById(deletedId)).isEmpty();
