@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.support.PostgresTestSupport;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * this test is just to cover main method in test coverage
  */
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.ALWAYS)
-class SpringBootTestingWebCompleteApplicationTest {
+class SpringBootTestingWebCompleteApplicationTest extends PostgresTestSupport {
 
     @Autowired
     ApplicationContext applicationContext;
